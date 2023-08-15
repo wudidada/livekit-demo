@@ -26,11 +26,14 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: "yarn"
 
-      - name: yarn build
+      - name: yarn install
         run: |
           npm install -D typescript
           yarn
-          yarn build-only
+        working-directory: ${{ env.DIRECTORY }}
+
+      - name: yarn build
+        run: yarn build-only
         working-directory: ${{ env.DIRECTORY }}
 
       - name: Upload artifact for deployment job
