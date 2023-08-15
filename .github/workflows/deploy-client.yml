@@ -65,7 +65,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 8037fd37fc7a665dfeee4347a23fc913
-          projectName: ${{ env.DIRECTORY }}
+          projectName: livekit-client
           directory: .
           # Optional: Change the Wrangler version, allows you to point to a specific version or a tag such as `beta`
           wranglerVersion: "3"
