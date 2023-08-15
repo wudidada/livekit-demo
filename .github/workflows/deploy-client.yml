@@ -25,19 +25,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: "yarn"
+          cache: "npm"
 
-      - name: yarn install
+      - name: npm install
         run: |
           npm install -D typescript
-          npm install -g vite
-          yarn
+          npm install
         working-directory: ${{ env.DIRECTORY }}
 
-      - name: yarn build
+      - name: npm build
         run: |
           ls -al
-          yarn build-only
+          npm run build-only
         working-directory: ${{ env.DIRECTORY }}
 
       - name: Upload artifact for deployment job
