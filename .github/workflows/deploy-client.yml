@@ -30,6 +30,7 @@ jobs:
       - name: yarn install
         run: |
           npm install -D typescript
+          npm install -g vite
           yarn
         working-directory: ${{ env.DIRECTORY }}
 
