@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: "18.x" # set this to the node version to use
-  NODE_ENV: "production"
+  NODE_VERSION: "18.x" # set this to the node version to u
   DIRECTORY: "liveKit-client"
 
 permissions:
@@ -25,18 +24,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
+          cache: "yarn"
 
-      - name: npm install
+      - name: yarn install
         run: |
           npm install -D typescript
-          npm install
+          yarn
         working-directory: ${{ env.DIRECTORY }}
 
       - name: npm build
         run: |
           ls -al
-          npm run build-only
+          export NODE_ENV=production
+          yarn build-only
         working-directory: ${{ env.DIRECTORY }}
 
       - name: Upload artifact for deployment job
